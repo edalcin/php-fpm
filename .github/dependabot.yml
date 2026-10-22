@@ -1,0 +1,11 @@
+version: 2
+updates:
+  # Novo digest de php:8.5-fpm-alpine (release de segurança) → PR automático.
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: daily
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
