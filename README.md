@@ -42,8 +42,8 @@ Container **php**:
 | Name | `php` |
 | Repository | `ghcr.io/edalcin/php-fpm:latest` |
 | Network Type | `Custom: web-php` |
-| Extra Parameters | `--user 99:100` (nobody:users, dono dos arquivos em `/mnt/user`) |
-| Path `/var/www/html` | pasta do docroot (somente leitura: `ro`) |
+| Extra Parameters | `--user 101:101` (dono dos dados que os sites gravam: `.dados/`, uploads, SQLite) |
+| Path `/var/www/html` | pasta do docroot (`rw`: os sites gravam dentro dela) |
 | Variable `TZ` | `America/Sao_Paulo` |
 
 Sem porta publicada: só o nginx fala com o FPM.
