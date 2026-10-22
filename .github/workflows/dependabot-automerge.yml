@@ -1,0 +1,28 @@
+name: Dependabot auto-merge
+
+# Patch/digest da imagem base (php:8.5-fpm-alpine) entra sozinho, mas só
+# depois que o check build-and-push (build + Trivy) passar — exigido pela
+# proteção do branch main. Minor/major (ex.: 8.5 → 8.6) e GitHub Actions
+# ficam para revisão manual.
+on: pull_request
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  automerge:
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - id: meta
+        uses: dependabot/fetch-metadata@v2
+
+      - if: >-
+          steps.meta.outputs.package-ecosystem == 'docker' &&
+          steps.meta.outputs.update-type != 'version-update:semver-major' &&
+          steps.meta.outputs.update-type != 'version-update:semver-minor'
+        run: gh pr merge --auto --squash "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
