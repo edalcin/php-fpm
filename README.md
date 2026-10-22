@@ -68,6 +68,6 @@ Container **web**:
     container_name: php
     user: "101:1000"
     volumes:
-      - /home/ec2-user/web:/var/www/html:ro
+      - <DOCROOT>:/var/www/html:ro
     networks: [cloudflare]
 ```
