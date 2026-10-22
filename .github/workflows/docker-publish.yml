@@ -40,7 +40,7 @@ jobs:
             type=sha,prefix=sha-
 
       - name: Build (local, para o scan)
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v7
         with:
           context: .
           load: true
@@ -56,7 +56,7 @@ jobs:
 
       - name: Push
         if: github.event_name != 'pull_request'
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v7
         with:
           context: .
           push: true
