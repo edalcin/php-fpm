@@ -2,7 +2,7 @@
 # Base: imagem oficial, reconstruída no dia de cada release de segurança.
 # O Dependabot abre PR quando o digest de php:8.5-fpm-alpine muda; o merge
 # dispara o CI, que publica ghcr.io/edalcin/php-fpm:latest.
-FROM php:8.5-fpm-alpine@sha256:4c2818074ec49f6abe46620f3965e0cb75bc3a5f2b417edd1aacaba6f091c40e
+FROM php:8.5-fpm-alpine@sha256:951fb5b1780219b81d5daffa4cebef8e0077c537f3893d9790a5dfcd66ca334d
 
 # Extensões usadas pelos sites (além das que já vêm na base: pdo_sqlite,
 # curl, mbstring, iconv, dom, simplexml, sodium, opcache):
